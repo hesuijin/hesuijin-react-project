@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 获得React对象 -->
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    const {Component} = React;
+    // 类组件header
+    class Header extends Component{
+        render(){
+            return (
+                <div>我是Header</div>
+            )
+        }
+    }
+    // root.render(<Header/>)
+
+    function render(reactComponent, root){
+        console.log('reactComponent: ', reactComponent);// react元素对象
+        console.log('root: ', root);
+        console.log('reactComponent.type: ', reactComponent.type);// Header类
+        // 实例化Header类
+        const instance = new reactComponent.type();
+        // 使用实例化对象调用 render方法
+        const vdom = instance.render();
+        console.log('vdom: ', vdom);// 
+        // 通过vdom 创建 真实dom
+        const realDom = document.createElement(vdom.type);//创建真实dom元素
+        // 给真实dom添加内容
+        realDom.innerHTML = vdom.props.children;
+        // 将真实dom添加到页面，完成渲染
+        root.appendChild(realDom);
+    }
+    let oRoot = document.querySelector('#root');
+    render(<Header/>, oRoot);
+</script>
+</html>

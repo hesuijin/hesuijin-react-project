@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--
+        <div class="wrapper">
+            <div class="swipper">
+                <h3>我是轮播图</h3>
+                <p>我是文字</p>
+            </div>
+            <span>我是span</span>
+            <span>我也是span</span>
+        </div>
+        -->
+    </div>
+</body>
+<script>
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    /**
+     * createElement创建react元素，当创建复杂页面结构的时候，写法太麻烦了，所以需要jsx
+     * 
+     */
+    const oDiv = React.createElement('div', {className:'wrapper'}, React.createElement(
+        'div',
+        {className:'swipper'},
+        React.createElement('h3',null, '我是轮播图'),
+        React.createElement('p', null, '我是文字')
+    ),
+        React.createElement('span', null, '我是span'),
+        React.createElement('span', null, '我也是span')
+    )
+    console.log('oDiv: ', oDiv);
+    root.render(oDiv)
+</script>
+</html>

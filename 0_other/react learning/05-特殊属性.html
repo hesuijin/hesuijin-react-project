@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <style>
+        .wrapper {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <div class="rapper">123</div>
+</body>
+<script>
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    // 属性：普通属性、自定义属性
+    const oDiv = React.createElement('div', { id: 'box', school: 'atguigu', className: 'wrapper' }, '内容');
+
+    /**
+     * 特殊属性className
+     * class 是 es6 定义类的关键字，为什么clas使用className?
+     * 虚拟dom真实dom属性一一对应的，虚拟dom最终会转化为真实dom，所以真实dom用的是className
+     * 
+     */
+    root.render(oDiv)
+
+    // 真实dom用的就是className
+    console.dir(document.querySelectorAll('.rapper')[0]);
+</script>
+
+</html>

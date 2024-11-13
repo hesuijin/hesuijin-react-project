@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    let width = 200;
+    let height = 100;
+
+    let styles = {
+        width: 200,
+        height: 100,
+        border: 1
+    }
+    root.render((
+        <div>
+            <table border="1" width={width} height={height}>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table border={styles.border} width={styles.width} height={styles.height}>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table {...styles}>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    ))
+</script>
+
+</html>

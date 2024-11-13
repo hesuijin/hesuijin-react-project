@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    function Header(){
+        console.log('Header run');
+        console.log('Header this: ', this);// 函数组件中this 指向undefined
+        return (
+            <div>我是Header组件</div>
+        )
+    }
+    function Main(){
+        return (
+            <div>我是Main组件</div>
+        )
+    }
+    function Footer(){
+        return (
+            <div>我是Footer组件</div>
+        )
+    }
+    root.render((
+        <>
+            <Header></Header>
+            <Header/>
+            <Main/>
+            <Footer/>
+        </>
+    ))
+</script>
+</html>

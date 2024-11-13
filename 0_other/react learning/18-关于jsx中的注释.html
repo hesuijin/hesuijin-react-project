@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    //sdfasdf
+    /**
+     * jsx中的注释：
+     * 1. 单行注释： {//}
+     * 2. 多行注释： {/**/}
+     * 3. 行内属性注释： /* */
+     * 
+     */
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    root.render((
+        <div>
+            { //单行注释，最少得两行
+            }
+            {/*多行注释*/}
+
+            {/*
+                多行注释
+                123123
+                123123
+                123123
+            */}
+            <div id='box' /* className='wrapper' */>我是div</div>
+        </div>
+    ))
+</script>
+
+</html>

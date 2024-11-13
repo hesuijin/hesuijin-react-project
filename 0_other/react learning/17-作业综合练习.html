@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+    <style>
+        .f20{
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    /**
+     * 需求：实现评论列表功能
+
+        li> a > [h3 p]
+
+        - 如果有评论数据，就展示列表结构 li（ 列表渲染 ）要包含a标签
+        - name 表示评论人，渲染 h3
+        - content 表示评论内容，渲染 p
+        - 如果没有评论数据，就展示一个 h1 标签，内容为： 暂无评论！
+        - 用户名的字体25px, 内容的字体20px
+     * 
+     */
+
+    const list = [
+        { id: 1, name: 'jack', content: 'rose, you jump i jump', time: '03:21' },
+        { id: 2, name: 'rose', content: 'jack, you see you, one day day', time: '03:22' },
+        { id: 3, name: 'tom', content: 'jack,。。。。。', time: '03:23' }
+    ]
+    root.render((
+        <div>
+            {list.length === 0 ? <h1> 暂无评论！</h1> : (
+                <ul>
+                    {list.map(item => (
+                        <li key={item.id}>
+                            <a href="" onClick={(e)=>e.preventDefault()}>
+                                <h3 style={{fontSize:25}}>{item.name}</h3>
+                                <p className="f20" onClick={()=>alert(item.time)}>{item.content}</p>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    ))
+</script>
+
+</html>

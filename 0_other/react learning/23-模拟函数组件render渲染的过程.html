@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    // root.render((
+    //     <div></div>
+    // ))
+    function Header(){
+        return (
+            <div>我是Header组件</div>
+        )
+    }
+
+    function render(reactComponent, root){
+        console.log('reactComponent: ', reactComponent);// react元素
+        console.log('reactComponent.type',reactComponent.type);// Header组件函数
+        // 调用函数
+        const vdom = reactComponent.type(); // vdom 是Header组件调用的返回值【react元素】
+        console.log('vdom: ', vdom);
+        // 创建真实dom
+        const realDom = document.createElement(vdom.type);
+        // 添加内容
+        realDom.innerHTML = vdom.props.children;
+        // 将真实dom渲染到根节点
+        root.appendChild(realDom);
+    }
+
+    const oRoot = document.querySelector('#root');
+    render(<Header/>, oRoot);
+</script>
+</html>

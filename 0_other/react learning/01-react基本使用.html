@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--1. 得到一个全局对象 React 提供了react核心的方法-->
+    <script src="./lib/react.development.js"></script>
+    <!--1. 得到一个全局对象 ReactDOM,用来操作 dom的 -->
+    <script src="./lib/react-dom.development.js"></script>
+</head>
+<body>
+    <!--2. 提供一个舞台 -->
+    <div id="root"></div>
+
+    <script>
+        console.log(React);
+        console.log(ReactDOM);
+        // 3. 让react 和 dom建立联系
+        /**
+         * 创建一个根节点
+         * create 创建
+         * root   根
+         * createRoot 创建一个根节点
+         * 
+         */
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        // 4. 在根节点中使用render方法渲染,render的内容会出现在 div#root中
+        root.render('我是react代码');
+    </script>
+</body>
+</html>

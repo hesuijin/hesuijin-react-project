@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    /**
+     *  style 的值必须是一个对象
+     *  如果是复合属性，需要用小驼峰命名法  backgroundColor 
+     *  单位如果是px，那么可以省略，直接写数字
+     */
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    let style = {
+        color: 'red',
+        border: '1px solid blue',
+        backgroundColor: 'pink',
+        width: '200px',
+        height: 500,
+        fontSize: 30
+    }
+    root.render((
+        <div>
+            <h3>行内样式style处理</h3>
+            <div style={{ color: 'red', border: '1px solid blue', backgroundColor: 'pink', width: '200px', height: 500, fontSize: 30 }}>红色文字，蓝色边框，粉色背景</div>
+
+            <div style={style}>我是div</div>
+        </div>
+    ))
+</script>
+
+</html>

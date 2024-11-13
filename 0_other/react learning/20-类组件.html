@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- <div className="header">我是头部</div>
+        <div className="main">我是内容</div>
+        <div className="footer">我是底部</div> -->
+    </div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+    // 定义Header类组件
+    class Header extends React.Component{
+        render(){
+            // 类组件render方法，永远是当前类组件的实例对象调用的
+            console.log('header render this: ' ,this);// this指向当前组件的实例
+            return (
+                <div className="header">我是头部</div>
+            )
+        }
+    }
+    
+    class Main extends React.Component{
+        render(){
+            return (
+                <div className="main">我是内容</div>
+            )
+        }
+    }
+    class Footer extends React.Component{
+        render(){
+            return (
+                <div className="footer">我是底部</div>
+            )
+        }
+    }
+    root.render((
+        <>
+            <Header></Header>
+            <Header/>
+            <Main></Main>
+            <Footer></Footer>
+        </>
+    ))
+</script>
+</html>

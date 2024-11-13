@@ -1,0 +1,28 @@
+
+前端发起请求                  服务器
+
+1. 响应一个html页面             浏览器解析器 会将html页面解析成 dom树
+2. 响应一个css文件              浏览器css解析器会将css文件解析成 css渲染树
+3. 响应一个js文件               浏览器的js解析器也会解析js
+                                  js 有可能会操作 dom元素改变他的样式[宽高、字体、颜色...]
+
+                                const oDiv = document.querySelector('div')
+                                oDiv.style.width = '20px';
+                                oDiv.style.height = '300px';
+                                oDiv.style.color = 'red';
+                                
+当我们用js操作真实dom的几何属性的时候，不光影响自己，还会影响其他元素的集合属性位置关系。相关元素的位置信息需要重新计算，这个重新计算的过程叫做重排，重排之后要进行重绘
+
+所以：传统js操作dom的方式有一个弊端，会导致大量的重排和重绘，效率较低
+
+虚拟dom：                                        真实dom元素
+1. 本质就是一个对象：属性较少【9个属性】        也是一个对象，但是属性很多[200多个]
+2. 虚拟dom有的属性和真实dom的属性是一一对应的
+3. 虚拟dom通过render方法，可以转化为真实dom
+4. 在react中，业管虚拟dom 叫 react元素
+5. 在react中如何创建虚拟dom？
+    5-1. React.createElement
+    5-2. jsx 创建
+
+
+什么是几何属性？一个元素的宽高、位置、边框、margin、padding

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    /**
+     * js表达式 和 js语句？
+     * js表达式：(js表达式都是有值的，可以用变量接收或者直接使用console打印)
+     * 1. 常量和变量
+     *    usonb(you are so n b)
+     *    u : undefined
+     *    s : string
+     *    o : object
+     *    n : null、 number
+     *    b : boolean
+     * 
+     * 2. 三元表达式
+     *      true ? 'i do' : 'i don't'
+     * 3. 逻辑运算表达式
+     *      5 && 8
+     * 4. 函数的调用
+     *      
+     * 
+     * js语句包括：
+     * 1. 循环语句
+     * 2. if else
+     * 3. switch case
+     * 4. 赋值语句 
+     * 
+     * 
+     * jsx中的 插值表达式： {js表达式}
+     * 
+     *    
+     *    s : string     渲染
+     *        number： 渲染
+     *    o : object
+     *        对象： {username:'atguigu',age:20}   
+     *               报错：Objects are not valid as a React child 
+     *                     对象数据类型不能作为react的子元素
+     * 
+     *        数组： [1,2,3,4]   将数组中的每一个元素，进行遍历渲染
+     *        
+     *    n : null       不渲染任何内容
+     *    u : undefined  不渲染任何内容
+     *    b : boolean 
+     *        true: 不渲染任何内容
+     *        false:不渲染任何内容
+     * 
+     */
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    let a = 123;// number
+    const str = 'abc';
+    let isLoading = false;
+
+    function fn(){
+        
+    }
+    function f1(){
+        return [1,2,3]
+    }
+    function f2(){
+        return {username:'atguigu'}
+    }
+    root.render((
+        <div>
+            <h3>基本数据类型 number</h3>
+            <p>{a}</p>
+            <h3>string</h3>
+            <p>{str}</p>
+            <h3>boolean</h3>
+            <p>true: <span>{true}</span></p>
+            <p>false: <span>{false}</span></p>
+            <h3>null</h3>
+            <p>null: <span>{null}</span></p>
+
+            <h3>undefined</h3>
+            <p>undefined: <span>{undefined}</span></p>
+
+            <h3>object- 对象-报错</h3>
+            {/*
+                <p>对象：<span>{{username:'atguigu',age:20}}</span></p>
+            */}
+
+            <h3>object - 数组</h3>
+            <p>数组: {[1, 2, 3, 4]}</p>
+            <p>数组: {['a', 'b', 'c', 'd']}</p>
+            <p>数组: {[true, false, null, undefined]}</p>
+            {/*
+                <p>数组: {[{name:'atguigu'},{name:'迪丽热巴'}]}</p>
+            */}
+            <h3>三元表达式</h3>
+            {isLoading ? '页面加载中.....' : '页面内容'}
+            <h3>逻辑 与 运算</h3>
+            {5 && 8} - {null && 200}
+            {5 || 8}
+            <h3>函数调用</h3>
+            <p>{fn()}</p>
+            <p>{f1()}</p>
+            {
+                /*<p>{f2()}</p>*/
+            }
+            
+
+        </div>
+    ))
+</script>
+
+</html>

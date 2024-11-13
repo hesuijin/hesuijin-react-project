@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    const flag = false;
+    const isLoading = false;
+    const oDiv = (
+        <div>
+            我是div
+        </div>
+    )
+    function friends(age){
+        if(age < 18){
+            return <div>请在父母的陪同下观看</div>
+        }else if(age > 18 && age < 60){
+            return <div>敬请欣赏</div>
+        }else if(age > 60 && age < 80){
+            return <div>保重身体</div>
+        }
+    }
+
+    // 单分支 if写法
+    let single = null;
+    if(flag){
+        single = <div>一起看电影</div>
+    }
+
+    // 双分支  if...else
+    let double = null;
+    if(isLoading){
+        double = <h3>页面正在加载中....</h3>
+    }else {
+        double = <div>我是页面内容</div>
+    }
+
+    root.render((
+        <div>
+            <h3>前提：插值表达式也可以渲染react 元素</h3>
+            {oDiv}
+
+            <h3>单分支</h3>
+            {flag && <div>一起看电影</div>}
+            {single}
+
+            <h3>双分支</h3>
+            {isLoading ? <h3>页面正在加载中....</h3> : <div>我是页面内容</div>}
+            {double}
+            <h3>多分支</h3>
+            {friends(16)}
+            {friends(24)}
+        </div>
+    ))
+</script>
+</html>

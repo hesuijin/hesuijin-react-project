@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+    <style>
+        .f1{
+            font-size: 20px;
+            color:blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    /**
+     *  列表渲染，要求数据类型 99.99% 都是一个数组
+     * 
+     *  react列表渲染的原理，就是将普通数据的数组，映射成一个react元素的数组，然后使用插值表达式渲染
+     */
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    let arr1 = [1, 2, 3, 4];
+    // 数组中的元素，可以是react元素
+    let arr2 = [<li>1</li>, <li>2</li>, <li>3</li>, <li>4</li>];
+
+    // map ==》 返回一个新数组，新数组的长度跟原数组一样，新数组每一个元素，可以根据原数组生成,新数组的元素由回调函数的返回值决定
+
+    let arr3 = arr1.map(item => {
+        console.log('item: ', item); // 遍历时数组中的每一项
+        /**
+         *  次
+         *  1       1
+         *  2       2
+         *  3       3
+         *  4       4
+         */
+        return (
+            <li>{item}</li>
+        )
+    })
+    console.log(arr3);
+
+    // 优化 map映射
+    let arr4 = arr1.map(item => (
+        <li>
+            {item}
+        </li>
+    ))
+
+    let users = [
+        {
+            id: 1,
+            username: 'atguigu',
+            age: 19
+        },
+        {
+            id: 2,
+            username: '迪丽热巴',
+            age: 29
+        },
+        {
+            id: 3,
+            username: '古力娜扎',
+            age: 20
+        },
+        {
+            id: 4,
+            username: '热依扎',
+            age: 31
+        }
+    ]
+
+    root.render((
+        <div>
+            <h3>简单数组元素渲染</h3>
+            {arr1}
+            <h3>将简单数组，渲染成 ul li 列表</h3>
+            <ul>
+                {arr1}
+            </ul>
+            <hr />
+            <ul>
+                {arr2}
+            </ul>
+            <hr />
+            <h3>使用map映射成一个react元素的新数组</h3>
+            <ul>
+                {arr3}
+            </ul>
+            <h3>map 映射优化后， 省略return 和 { }</h3>
+            <ul>
+                {arr4}
+            </ul>
+            <h3>map 映射列表渲染终极版本</h3>
+            <ul>
+                {arr1.map(item => (
+                    <li>{item}</li>
+                ))}
+            </ul>
+
+            <hr />
+            <h3>数组是对象，复杂数据类型渲染</h3>
+            <ul>
+                {users.map(user=>(
+                    <li>
+                        <h3 style={{color:'red'}}>姓名: {user.username}</h3>
+                        <p className='f1'>年龄: {user.age}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    ))
+</script>
+
+</html>

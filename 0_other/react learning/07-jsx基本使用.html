@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<script type="text/babel">
+    /**
+     * jsx: xml + js 的混合语法
+     * 是react特有的，用来创建react元素[虚拟dom],作用跟 React.createElement一样
+     * 
+     * 
+     */
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    const oDiv = (
+        <div className="wrapper">
+            <div className="swipper">
+                <h3>我是轮播图</h3>
+                <p>我是文字</p>
+            </div>
+            <span>我是span</span>
+            <span>我也是span</span>
+            {/*
+                jsx如果是小写字母的标签，只能写浏览器可识别的标签
+                <username>用户名</username>
+            */}
+            {/*
+                首字母大写，当做组件处理
+                <User></User>
+            */}
+        </div>
+    )
+    console.log(oDiv);
+    root.render(oDiv);
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- window.event -->
+    <p><button onclick="fn(event);">按钮1</button></p>
+    <p><a href="http://baidu.com" onclick="fn(event)">百度</a></p>
+    <p><button onclick="f1(1,2)">自定义参数和事件对象同时传1</button></p>
+    <p><button onclick="f1(1,event)">自定义参数和事件对象同时传2</button></p>
+    <p><button onclick="f2(this)">实参this,指向当前按钮</button></p>
+    <hr/>
+    <input type="text" name="" id="" oninput="f3(event)">
+    <hr/>
+    <input type="text" name="" id="" onchange="f4(event)">
+    <script>
+        // let oBtn = document.querySelector('button');
+        // oBtn.onclick = function(){
+
+        // }
+        // fn是click事件的事件回调函数
+        /**
+         * 1. fn 是谁调用的，this!  事件回调的函数的调用者是 window
+         * 2. 事件对象: 调用是传递实参event
+         * 3. 阻止默认行为：e.preventDefault();
+         * 
+         */
+
+        function fn(e){
+            console.log('this: ', this);
+            console.log('e: ', e);
+            e.preventDefault();
+        }
+
+        function f1(a,b){
+            console.log('a: ', a);
+            console.log('b: ',b);
+        }
+
+        function f2(_this){
+            console.log('_this: ', _this);// 指向当前按钮
+            console.log(this);// window 调用者是window
+        }
+
+
+        function f3(e){
+            //oninput 触发时机，有输入就触发
+            console.log('oninput value: ',e.target.value)
+            console.log('oninput e: ', e);//InputEvent
+        }
+
+        function f4(e){
+            // onchange 内容有变化，并且失去交点触发
+            console.log('onchange value: ',e.target.value)
+            console.log('onchange e: ', e);//Event 
+        }
+
+    </script>
+</body>
+</html>

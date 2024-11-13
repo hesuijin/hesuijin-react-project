@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    /**
+     * 文档碎片，解决了react要求必须有唯一根节点，导致多一层div结构的问题
+     * 
+     */
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    const { Fragment } = React;
+    root.render((
+        // 用法一
+        /*
+        <React.Fragment>
+            <div>1111</div>
+            <div>2222</div>
+        </React.Fragment>
+        */
+
+        // 用法二
+        /*
+        <Fragment>
+            <div>1111</div>
+            <div>2222</div>
+        </Fragment>
+        */
+        // 用法三
+        <>
+            <div>1111</div>
+            <div>2222</div>
+        </>
+    ))
+</script>
+
+</html>

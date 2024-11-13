@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+    <style>
+        .box{
+            width:200px;
+            height:100px;
+            border:1px solid red;
+        }
+        .c1{
+            color:red;
+        }
+        .f1 {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    let class1 = "box c1 f1"
+    let class2 = ['box','c1','f1']; 
+    // 数组如果不是class属性，使用插值表达式，是遍历挨个渲染
+    // 数组如果是 class属性，遍历挨个渲染，中间用,链接
+
+    // 正确处理方式： join
+    root.render((
+        <div>
+            <h3>样式类名</h3>
+            <div className="box">
+                box1
+            </div>
+            <div className="box c1 f1">box2</div>
+            <h3>插值表达式处理样式</h3>
+            <div className={class1}>box3</div>
+            <h3>样式是一个数组</h3>
+            <div className={class2}>box4</div>
+            <div className={class2.join(' ')}>box5</div>
+        </div>
+    ))
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+</body>
+<script>
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    /**
+     * 创建react元素[虚拟dom]
+     * create：创建
+     * Element：元素
+     * React.createElement(标签名,标签属性, 子元素1, 子元素2,....)
+     * 
+     */
+    const oDiv = React.createElement('div',{id:'box', school:'atguigu'},'我是div','我真的是div')
+
+    console.log('oDiv: ', oDiv);// oDiv就是一个对象  type是标签名 props属性 props.children子元素
+
+    root.render(oDiv);// 通过render方法，将react元素渲染到页面
+
+    // 如果没有属性，怎么创建？第二个参数需要占位 {}、null、undefined
+
+    // const oSpan = React.createElement('span',{},'我是span标签');
+    // const oSpan = React.createElement('span',null,'我是span标签');
+    // const oSpan = React.createElement('span',undefined,'我是span标签');
+
+    // 用任何值占位都可以，但是不推荐，推荐以上三种
+    // const oSpan = React.createElement('span',[],'我是span标签');
+    // const oSpan = React.createElement('span',1231232132435,'我是span标签');
+    root.render(oSpan);
+    
+</script>
+</html>
